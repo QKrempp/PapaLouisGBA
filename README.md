@@ -9,15 +9,17 @@ On peut alors compiler un projet d'exemple, comme [celui-ci](https://gbadev.org/
 
 ```shell
 # cross-compilation
-arm-none-eabi-gcc -c main.c -mthumb-interwork -mthumb -O2 -o main.o
+arm-none-eabi-gcc -c my_file.c -mthumb-interwork -mthumb -O2 -o my_file.o
 # link des fichiers
-arm-none-eabi-gcc main.o -mthumb-interwork -mthumb -specs=gba.specs -o main.elf
+arm-none-eabi-gcc my_file.o -mthumb-interwork -mthumb -specs=gba.specs -o my_file.elf
 # strip des informations non-nécessaires
-arm-none-eabi-objcopy -v -O binary main.elf main.gba
+arm-none-eabi-objcopy -v -O binary my_file.elf my_file.gba
 # fix de la ROM
-gbafix main.gba
+gbafix my_file.gba
 ```
 
-On peut alors lancer la ROM dans un émulateur comme [mGBA](https://mgba.io/)
+Ou alors utiliser la commande `make` pour effectuer automatiquement les actions ci-dessus.
+
+On peut alors lancer la ROM dans un émulateur comme [mGBA](https://mgba.io/).
 
 Si la compilation a fonctionné, le fichier `.gba` devrait être accepté et exécuté par l'émulateur.

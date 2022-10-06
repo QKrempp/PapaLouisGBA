@@ -1,8 +1,8 @@
 CC = 			arm-none-eabi-gcc
-CC_FLAGS = 		-mthumb-interwork -mthumb -O2
 
-COBJ =			arm-none-eabi-gcc
-COBJ_FLAGS =		-mthumb-interwork -mthumb -specs=gba.specs
+ARCH_FLAGS =		-mthumb-interwork -mthumb
+CC_FLAGS = 		$(ARCH_FLAGS) -O2 -Wall -fno-strict-aliasing
+LD_FLAGS =		$(ARCH_FLAGS) -specs=gba.specs
 
 OBJ_COPY =		arm-none-eabi-objcopy
 OBJ_COPY_FLAGS = 	-v -O binary
@@ -37,7 +37,7 @@ $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c $(SRC_PATH)/%.h
 # Effectue le linking des fichiers
 $(TARGET_ELF):$(OBJ)
 	@echo -e "\n\033[1m=>	Linking files\033[0m"
-	$(COBJ) $(OBJ) $(COBJ_FLAGS) -o $@
+	$(CC) $^ $(LD_FLAGS) -o $@
 
 
 # Finalise la ROM
@@ -59,4 +59,4 @@ makedir:
 
 .PHONY: clean
 clean:
-	@rm -f $(OBJ) $(TARGET_ELF) $(TARGET_GBA)
+	@rm -fv $(OBJ) $(TARGET_ELF) $(TARGET_GBA)
