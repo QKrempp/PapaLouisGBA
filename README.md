@@ -5,6 +5,8 @@ Tentative d'écriture d'un jeu pour la GameBoy Advance de Nintendo
 
 Pour compiler le jeu, il est nécessaire d'avoit installé `devkitpro`, selon [ce tutoriel](https://devkitpro.org/wiki/Getting_Started).
 
+Penser a vérifier que `devkitPto/devkitProARM/bin` et `devkitPro\tools\bin` sont bien dans le PATH.
+
 On peut alors compiler un projet d'exemple, comme [celui-ci](https://gbadev.org/demos.php?showinfo=323), avec les commandes suivantes, comme présenté dans [ce guide](https://www.reinterpretcast.com/writing-a-game-boy-advance-game):
 
 ```shell
